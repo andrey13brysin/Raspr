@@ -1,0 +1,25 @@
+[package]
+name = "task"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+
+[package.metadata.deb]
+maintainer = "Андрей Брысин <you@example.com>"
+depends = "libc6 (>= 2.31)"
+section = "utils"
+priority = "optional"
+assets = [
+    [
+        "target/release/task",
+        "usr/bin/",
+        "755",
+    ],
+    [
+        "README.md",
+        "usr/share/doc/task/README",
+        "644",
+    ],
+]
