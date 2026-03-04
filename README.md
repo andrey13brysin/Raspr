@@ -1,7 +1,3 @@
-# task
-
-Simple Rust CLI program for lab variant 2: check whether a number is prime.
-
 ## Build and run
 
 Use `mingw32-make` on Windows:
