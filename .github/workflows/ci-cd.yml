@@ -53,6 +53,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: raspr-release
-          path: target/release/raspr
+          path: target/release/task
         
     
