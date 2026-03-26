@@ -1,0 +1,58 @@
+name: Raspr CI/CD pipeline
+
+on:
+  push:
+    branches: [main] 
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout rep
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+        
+      - name: Setup cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check code formatting
+
+        run: cargo fmt --all -- --check
+
+      - name: Run Clippy
+
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Build project
+        run: cargo build --debug
+
+      - name: Run tests
+        run: cargo test --debug
+
+  build-release:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    
+    steps:
+      - name: Checkout rep
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        
+      - name: Build release
+        run: cargo build --release
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: raspr-release
+          path: target/release/raspr
+        
+    
