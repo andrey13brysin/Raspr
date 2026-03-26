@@ -50,7 +50,7 @@ jobs:
       - name: Build release
         run: cargo build --release
       - name: Upload release artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: raspr-release
           path: target/release/raspr
