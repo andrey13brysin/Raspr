@@ -49,10 +49,20 @@ jobs:
         
       - name: Build release
         run: cargo build --release
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-release
+    
+    steps:
+      - name: Checkout rep
+        uses: actions/checkout@v4
+
+      - name: deploy deb
+        run: cargo deb
+
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
         with:
           name: raspr-release
-          path: target/release/task
-        
-    
+          path: target/debian/task_0.1.0-1_amd64.deb

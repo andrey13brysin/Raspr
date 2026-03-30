@@ -7,19 +7,19 @@ edition = "2024"
 
 
 [package.metadata.deb]
-maintainer = "Андрей Брысин <you@example.com>"
-depends = "libc6 (>= 2.31)"
+maintainer = "Андрей Брысин"
+depends = "libc6 (>= 2.31), cargo"
 section = "utils"
 priority = "optional"
 assets = [
     [
         "target/release/task",
         "usr/bin/",
-        "755",
+        "777",
     ],
     [
         "README.md",
         "usr/share/doc/task/README",
-        "644",
+        "777",
     ],
 ]
