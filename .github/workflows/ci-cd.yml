@@ -58,7 +58,7 @@ jobs:
       - name: Checkout rep
         uses: actions/checkout@v4
 
-      - name: deploy deb
+      - name: deploy
         run: cargo deb
 
       - name: Upload release artifact
