@@ -60,7 +60,7 @@ jobs:
 
       - name: setup cargo-deb
         run: cargo install cargo-deb
-        
+
       - name: Build Debian package
         run: cargo deb
 
@@ -69,3 +69,6 @@ jobs:
         with:
           name: raspr-release
           path: target/debian/task_0.1.0-1_amd64.deb
+      
+      - name: Build Docker Image
+        run: docker build . -t raspr:latest
