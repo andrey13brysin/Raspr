@@ -58,7 +58,10 @@ jobs:
       - name: Checkout rep
         uses: actions/checkout@v4
 
-      - name: deploy
+      - name: setup cargo-deb
+        run: cargo install cargo-deb
+        
+      - name: Build Debian package
         run: cargo deb
 
       - name: Upload release artifact
