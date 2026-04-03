@@ -71,10 +71,10 @@ jobs:
           path: target/debian/task_0.1.0-1_amd64.deb
       
       - name: Build Docker Image
-        run: docker build . -t raspr:latest
+        run: docker build . -t ${{secrets.DOCKER_HUB_USERNAME}}/raspr:latest
 
       - name: Login to Docker Hub
         run: echo "${{secrets.DOCKER_HUB_TOKEN}}" | docker login -u ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
 
       - name: Push Docker Image
-        run: docker image push ${{secrets.DOCKER_HUB_USERNAME}}/raspr:latest
+        uses: docker image push ${{secrets.DOCKER_HUB_USERNAME}}/raspr:latest
