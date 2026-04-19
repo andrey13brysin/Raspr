@@ -1,5 +1,5 @@
-use std::io;
 use std::env;
+use std::io;
 
 const MAX_N: u64 = 1_000_000_000_000;
 
