@@ -66,8 +66,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let mut n: u64;
 
-    if args.len() != 1
-    {
+    if args.len() != 1 {
         n = args[1].parse().unwrap();
     }
     else {
