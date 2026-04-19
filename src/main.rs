@@ -68,10 +68,10 @@ fn main() {
 
     if args.len() != 1 {
         n = args[1].parse().unwrap();
-    }
-    else {
+    } else {
         n = read_number();
     }
+
     if is_prime(n) {
         println!("{n} — простое число");
     } else {
