@@ -76,5 +76,8 @@ jobs:
       - name: Login to Docker Hub
         run: echo "${{secrets.DOCKER_HUB_TOKEN}}" | docker login -u ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
 
+      - name: run container
+        run: docker run --rm ${{secrets.DOCKER_HUB_USERNAME}}/raspr:latest 
+
       - name: Push Docker Image
         run: docker image push ${{secrets.DOCKER_HUB_USERNAME}}/raspr:latest
