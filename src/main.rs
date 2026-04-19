@@ -64,7 +64,7 @@ fn read_number() -> u64 {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let mut n: u64;
+    let n: u64;
 
     if args.len() != 1 {
         n = args[1].parse().unwrap();
