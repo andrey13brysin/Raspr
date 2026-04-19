@@ -64,13 +64,12 @@ fn read_number() -> u64 {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let n: u64;
 
-    if args.len() != 1 {
-        n = args[1].parse().unwrap();
+    let n: u64 = if args.len() != 1 {
+        args[1].parse().unwrap()
     } else {
-        n = read_number();
-    }
+        read_number()
+    };
 
     if is_prime(n) {
         println!("{n} — простое число");
