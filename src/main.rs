@@ -1,5 +1,7 @@
 use std::env;
 use std::io;
+use rand::Rng;
+use std::time::Duration;
 
 const MAX_N: u64 = 1_000_000_000_000;
 
@@ -64,17 +66,23 @@ fn read_number() -> u64 {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    let mut rng = rand::rng();
+    loop
+    {    
+        let n: u64 = if args.len() != 1 {
+            args[1].parse().unwrap()
+        } else {
+            rng.gen_range(0..=MAX_N)
+            //read_number()
+        };
 
-    let n: u64 = if args.len() != 1 {
-        args[1].parse().unwrap()
-    } else {
-        read_number()
-    };
+        if is_prime(n) {
+            println!("{n} — простое число");
+        } else {
+            println!("{n} — не простое число");
+        }
 
-    if is_prime(n) {
-        println!("{n} — простое число");
-    } else {
-        println!("{n} — не простое число");
+        std::thread::sleep(Duration::from_secs(3));
     }
 }
 
